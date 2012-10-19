@@ -28,6 +28,13 @@ var maxlng = -1000;
   var markerLayer = mapbox.markers.layer()
     // start with all markers hidden
     .filter(function(f) { return false })
+    .factory(function(f) {
+      var custommarker = document.createElement("img");
+      custommarker.className = "marker-image";
+      custommarker.style.width = "14px";
+      custommarker.setAttribute("src", "/images/monotone_location_pin_marker.png")
+      return custommarker;
+    })
     .url('/timeline-at.geojson?customgeo=' + getURLParameter("customgeo"), function(err, features) {
       // callback once GeoJSON is loaded
 
