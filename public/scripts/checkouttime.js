@@ -4,12 +4,7 @@ var years = {},
   set_time_period;
   
 var codeToTime = function(yearCode){
-  console.log(yearCode);
-  yearCode -= 2000;
-  var year = 1997 + Math.floor(yearCode / 12);
-  var month = yearCode % 12;
-  var monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-  return monthNames[month] + " " + year;
+  return yearCode;
 };
 
 function getURLParameter(name) {
@@ -76,7 +71,7 @@ var maxlng = -1000;
       myd.id = "mydate";
       myd.style.fontSize = "16pt";
       myd.style.marginLeft = "50px";
-      myd.innerHTML = "Jan 1997";
+      myd.innerHTML = "1862";
       controls.appendChild( myd );
       $("#loading").css({ display: "none" });
 
@@ -103,21 +98,21 @@ var maxlng = -1000;
         window.clearInterval(playStep);
       };
 
-      set_time_period(2000)();
+      set_time_period(1862)();
   });
 
   map.addLayer(markerLayer);
   
   // generalize code to fit all markers
-  map.zoom(15).center({ lat: 32.837026, lon:  -83.6457823 });
+  map.zoom(15).center({ lat: 32.858861, lon: -83.672004 });
 
   // make a jQuery slider to view code enforcement case timeline
   $("#filter").slider({
     orientation: "horizontal",
     range: "min",
-    min: 2000,
-    max: 2185,
-    value: 2000,
+    min: 1862,
+    max: 2009,
+    value: 1862,
     slide: function (event, ui) {
       set_time_period(ui.value)();
     }

@@ -1,6 +1,6 @@
 head
   meta(name="viewport", content="initial-scale=1.0, user-scalable=no")
-  title Code Enforcement Data Check-Out
+  title Historic Macon Data Check-Out
   link(rel='stylesheet', href='/stylesheets/leaflet.css', type='text/css')
   link(rel='stylesheet', href='/pancontrol/stylesheets/L.Control.Pan.css', type='text/css')
   // [if lte IE 8]
@@ -18,9 +18,9 @@ head
 body
   div#sidebar(style="left:initial;right:12%;border:1px solid #000;")
     div#timeline
-      h2 Code Enforcement Timeline Maker
+      h2 Historic Macon Timeline Maker
       p
-        span Animate cases in your neighborhood from January 1997 to May 2012!
+        span Animate homes being built from 1863 to 2009!
         br
         span 1) Move points on the blue shape to cover your neighborhood.
         br
@@ -30,9 +30,5 @@ body
         a.visible(href="#", onclick="postGeo('geojson')") GeoJSON,
         span &nbsp;or&nbsp;
         a.visible(href="#", onclick="postGeo('kml')") Google Earth / KML.
-        br
-        span Locations rounded to within a few blocks. See&nbsp;
-        a.visible(href="http://homestatus.herokuapp.com") HomeStatus
-        span &nbsp;for detailed cases from 2009-2012.
 
   div#map
