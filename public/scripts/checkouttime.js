@@ -28,13 +28,6 @@ var maxlng = -1000;
   var markerLayer = mapbox.markers.layer()
     // start with all markers hidden
     .filter(function(f) { return false })
-    .factory(function(f) {
-      var custommarker = document.createElement("img");
-      custommarker.className = "marker-image";
-      custommarker.style.width = "14px";
-      custommarker.setAttribute("src", "/images/monotone_location_pin_marker.png")
-      return custommarker;
-    })
     .url('/timeline-at.geojson?customgeo=' + getURLParameter("customgeo"), function(err, features) {
       // callback once GeoJSON is loaded
 
@@ -49,6 +42,8 @@ var maxlng = -1000;
       };
 
       for (var i = 0; i < features.length; i++) {
+        features.properties["marker-color"] = '#000';
+        features.properties["marker-symbol"] = 'star-stroked';
         years[features[i].properties.year] = true;
         minlat = Math.min(minlat, features[i].geometry.coordinates[1]);
         maxlat = Math.max(maxlat, features[i].geometry.coordinates[1]);
@@ -108,6 +103,10 @@ var maxlng = -1000;
       set_time_period(1862)();
   });
 
+  var interaction = mapbox.markers.interaction(markerLayer);
+  interaction.formatter(function(feature) {
+    return feature.properties.address + "<br/>Built " + feature.properties.start;
+  });
   map.addLayer(markerLayer);
   
   // generalize code to fit all markers
