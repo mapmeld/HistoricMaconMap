@@ -42,8 +42,8 @@ var maxlng = -1000;
       };
 
       for (var i = 0; i < features.length; i++) {
-        features.properties["marker-color"] = '#000';
-        features.properties["marker-symbol"] = 'star-stroked';
+        features[i].properties["marker-color"] = '#000';
+        features[i].properties["marker-symbol"] = 'star-stroked';
         years[features[i].properties.year] = true;
         minlat = Math.min(minlat, features[i].geometry.coordinates[1]);
         maxlat = Math.max(maxlat, features[i].geometry.coordinates[1]);
@@ -105,7 +105,7 @@ var maxlng = -1000;
 
   var interaction = mapbox.markers.interaction(markerLayer);
   interaction.formatter(function(feature) {
-    return feature.properties.address + "<br/>Built " + feature.properties.start;
+    return feature.properties.address + "<br/>Built " + feature.properties.startyr;
   });
   map.addLayer(markerLayer);
   
