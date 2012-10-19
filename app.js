@@ -67,6 +67,7 @@ var init = exports.init = function (config) {
     pt = new timepoint.TimePoint({
       start: req.body['start'],
       end: req.body['end'],
+      address: req.body['address'],  // added address for Historic Macon
       // use [ lng , lat ] format to be consistent with GeoJSON
       ll: [ req.body['lng'] * 1.0, req.body['lat'] * 1.0 ]
     });
@@ -84,18 +85,13 @@ var init = exports.init = function (config) {
         var latitude = timepoints[t].ll[1];
         var longitude = timepoints[t].ll[0];
         var convertToDate = function(timecode){
-          timecode -= 2000;
-          year = 1997 + Math.floor( timecode / 12 );
-          timecode -= (year - 1997) * 12;
-          month = 1 + timecode;
-          if(month < 10){
-            month = "0" + month;
-          }
-          return year + "-" + month;
+          return timecode + "-01";
         };
         var startstamp = convertToDate( timepoints[t].start );
         var endstamp = convertToDate( timepoints[t].end );
-        kmlpts += '	<Placemark>\n		<TimeSpan>\n';
+        kmlpts += '	<Placemark>\n';
+        kmlpts += '		<name>' + timepoints[t].address + '</name>';
+        kmlpts += '		<TimeSpan>\n';
         kmlpts += '			<begin>' + startstamp + '</begin>\n';
         kmlpts += '			<end>' + endstamp + '</end>\n';
         kmlpts += '		</TimeSpan>\n		<styleUrl>#dot-icon</styleUrl>\n		<Point>\n';
@@ -115,7 +111,8 @@ var init = exports.init = function (config) {
           },
           "properties": {
             "startyr": timepoints[t].start,
-            "endyr": timepoints[t].end
+            "endyr": timepoints[t].end,
+            "address": timepoints[t].address
           }
         };
       }

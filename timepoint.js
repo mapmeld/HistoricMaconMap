@@ -5,7 +5,8 @@ var mongoose = require('mongoose'),
 var TimePointSchema = new Schema({
   ll: { type: [Number], index: '2d' },
   start: Number,
-  end: Number
+  end: Number,
+  address: String
 });
 
 var TimePoint = mongoose.model('TimePoint', TimePointSchema);
