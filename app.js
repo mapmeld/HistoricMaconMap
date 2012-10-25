@@ -88,7 +88,8 @@ var init = exports.init = function (config) {
           return timecode + "-01";
         };
         var startstamp = convertToDate( timepoints[t].start );
-        var endstamp = convertToDate( timepoints[t].end );
+        var d = new Date();
+        var endstamp = d.getUTCFullYear() + "-01";
         kmlpts += '	<Placemark>\n';
         kmlpts += '		<name>' + timepoints[t].address + '</name>';
         kmlpts += '		<TimeSpan>\n';
@@ -96,7 +97,9 @@ var init = exports.init = function (config) {
         kmlpts += '			<end>' + endstamp + '</end>\n';
         kmlpts += '		</TimeSpan>\n		<styleUrl>#dot-icon</styleUrl>\n		<Point>\n';
         kmlpts += '			<coordinates>' + longitude + ',' + latitude + '</coordinates>\n';
-        kmlpts += '		</Point>\n	</Placemark>\n';
+        kmlpts += '		</Point>\n';
+        kmlpts += '		<description>Built ' + timepoints[t].start + '</description>\n';
+        kmlpts += '	</Placemark>\n';
       }
       var kmlout = '  </Document>\n</kml>';
       res.setHeader('Content-Type', 'application/kml');
