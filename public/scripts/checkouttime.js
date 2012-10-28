@@ -1,7 +1,8 @@
 var years = {},
   yearlist = [],
   year_links = [],
-  set_time_period;
+  set_time_period,
+  map;
   
 var codeToTime = function(yearCode){
   return yearCode;
@@ -22,7 +23,8 @@ var minlng = 1000;
 var maxlng = -1000;
 
   // create map with College Hill highlighted ( generalize in future versions )
-  var map = mapbox.map('map');
+  map = mapbox.map('map');
+  
   map.addLayer(mapbox.layer().id('mapmeld.map-ofpv1ci4'));
 
   var markerLayer = mapbox.markers.layer()
