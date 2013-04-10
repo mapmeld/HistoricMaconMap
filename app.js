@@ -7,7 +7,6 @@ var express = require('express')
     , mongoose = require('mongoose')
     , routes = require('./routes')
     , middleware = require('./middleware')
-    , request = require('request')
     , timepoint = require('./timepoint')
     , customgeo = require('./customgeo')
     ;
