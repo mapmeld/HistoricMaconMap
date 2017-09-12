@@ -1,5 +1,7 @@
 # GeoData-Checkout
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mapmeld/HistoricMaconMap.svg)](https://greenkeeper.io/)
+
 GeoData-Checkout is an open data platform for geospatial and time-enabled data. Data is stored inside MongoDB and made available to users in an interactive timeline/map, time-enabled KML for Google Earth, and GeoJSON.
 
 Step 1: Draw a polygon around your neighborhood ( using Leaflet.js polygon editing tools )
